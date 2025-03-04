@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Add Course Page{% endblock title %}
+{% block body %}
+    <h1>Add Course</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{fm.as_p}}   
+        <label for="">Enter Description</label>     
+        <textarea name="description" id="" rows="5" cols="30"></textarea><br>
+        <button type="submit">Add</button>
+        <button type="reset">Reset</button>
+        <a href="{% url 'addsubject' %}">AddSubject</a><br>
+        <a href="{% url 'courselist' %}">Home</a>
+    </form>
+{% endblock body %}

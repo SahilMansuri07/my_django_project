@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Add Subject Page{% endblock title %}
+{% block body %}
+    <h1>Add Subject</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{fm.as_p}}   
+        <label for="course">Select Course</label>
+        <select name="course" id="course">
+            {% if cou %}
+                {% for cou in cou %}
+                    <option value="{{cou.id}}">{{cou.name}}</option>
+                {% endfor %}
+            {% else %}
+                <option value=""><a href="{% url 'addcourse' %}">Add Course</a></option>
+            {% endif %}
+        </select><br>
+        <button type="submit">Add</button>
+        <button type="reset">Reset</button>
+        <a href="{% url 'addcourse' %}">AddCourse</a><br>
+        <a href="{% url 'courselist' %}">Home</a>
+    </form>
+{% endblock body %}

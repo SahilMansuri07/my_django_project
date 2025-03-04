@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Subject Page{% endblock title %}
+{% block body %}
+    <h1>Course</h1>
+    <h1>{{cou.name}}</h1>
+    <h1>{{cou.description}}</h1>
+    <h1>SubjectList</h1>
+    <h1>Hello {{name}}!!!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>SrNo</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if sub %}
+                {% for sub in sub %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{sub.name}}</td>        
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3"><h1>No Records</h1></td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit">Enroll in the course</button>
+        <input type="hidden" name="cid" value="{{cou.id}}">
+    </form>
+    <a href="{% url 'courselist' %}">Back</a>
+{% endblock body %}
