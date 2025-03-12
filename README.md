@@ -1,0 +1,1 @@
+Django Course Management App
